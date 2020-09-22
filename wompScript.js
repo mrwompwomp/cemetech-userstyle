@@ -1,3 +1,15 @@
+function escapeHtml(text) {
+    function replaceTag(tag) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;"
+        } [tag] || tag;
+    }
+    return text.replace(/[&<>]/g, replaceTag);
+}
+
+
 //Shorter dates
 if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekposts") {
     var NodeList = document.getElementsByClassName("forumline")[0].firstElementChild.children;
@@ -13,10 +25,15 @@ if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekpo
         content.parentNode.insertBefore(document.createElement("br"), content.nextElementSibling);
     }
 }
+
 //Make online names clickable
-var sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
-var pre = sidebar.textContent.split("Members:");
-var names = pre.pop().trim().slice(0, -1).split(", ");
-for (var i = 0; i < names.length; i++)
-    names[i] = "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + names[i] + "'>" + names[i] + "</a>";
-sidebar.innerHTML = pre + "<br>Members: " + names.join(", ") + ".";
+const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
+
+const parts = sidebar.textContent.split("Members:");
+const before = parts[0];
+const names = parts[1].trim().slice(0, -1).split(", ");
+const links = names.map(name => {
+    return "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+});
+
+sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
