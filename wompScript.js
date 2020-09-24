@@ -44,3 +44,14 @@ if (sidebar.parentElement.childElementCount == 2) {
         node.innerHTML = "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
     }
 }
+
+//flatten pips
+if (location.href.includes("https://www.cemetech.net/forum/profile.php?mode=viewprofile")) {
+    var pips = document.querySelectorAll(".profile_brief .gen:nth-child(6)")[0].firstElementChild.src;
+    if (!pips.includes("expert.png")) {
+        var num = pips.slice(0, -4).split("pips/").pop();
+        document.querySelectorAll(".profile_brief .gen:nth-child(6)")[0].style.width = 0.75 * num + "em";
+    } else {
+        document.querySelectorAll(".profile_brief .gen:nth-child(6)")[0].style.background = "none"
+    }
+}
