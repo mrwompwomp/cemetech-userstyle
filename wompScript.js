@@ -28,12 +28,19 @@ if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekpo
 
 //Make online names clickable
 const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
-
-const parts = sidebar.textContent.split("Members:");
-const before = parts[0];
-const names = parts[1].trim().slice(0, -1).split(", ");
-const links = names.map(name => {
-    return "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
-});
-
-sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
+if (sidebar.parentElement.childElementCount == 2) {
+    const parts = sidebar.textContent.split("Members:");
+    const before = parts[0];
+    const names = parts[1].trim().slice(0, -1).split(", ");
+    const links = names.map(name => {
+        return "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+    });
+    sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
+} else {
+    const parts = document.getElementsByClassName("commasep-list")[0];
+    for (var i = 1; i < parts.childElementCount + 1; i++) {
+        var node = parts.childNodes[i].firstElementChild;
+        var name = node.textContent;
+        node.innerHTML = "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+    }
+}
