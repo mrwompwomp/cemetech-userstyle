@@ -9,7 +9,6 @@ function escapeHtml(text) {
     return text.replace(/[&<>]/g, replaceTag);
 }
 
-
 //Shorter dates
 if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekposts") {
     var NodeList = document.getElementsByClassName("forumline")[0].firstElementChild.children;
@@ -45,13 +44,13 @@ if (sidebar.parentElement.childElementCount == 2) {
     }
 }
 
-//flatten pips
+//Flatten pips
 if (location.href.includes("https://www.cemetech.net/forum/profile.php?mode=viewprofile")) {
     var pips = document.querySelectorAll(".profile_brief .gen:nth-child(6)")[0].firstElementChild.src;
     if (!pips.includes("expert.png")) {
         var num = pips.slice(0, -4).split("pips/").pop();
         document.querySelectorAll(".profile_brief .gen:nth-child(6)")[0].style.width = 0.75 * num + "em";
     } else {
-        document.querySelectorAll(".profile_brief .gen:nth-child(6)")[0].style.background = "none"
+        document.querySelectorAll(".profile_brief .gen:nth-child(6)")[0].style.background = "none";
     }
 }
