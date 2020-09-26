@@ -35,22 +35,14 @@ li.post-datetime a {
     transition: background-size .3s;
 }
 
-a.postlink:hover,
-a.postlink:focus,
-li.navbutton:hover a,
-li.navbutton:focus a,
-a.maintitle:hover,
-a.maintitle:focus,
-a.nav:hover,
-a.nav:focus,
-aside a:hover,
-aside a:focus,
-a.username:hover,
-a.username:focus,
-li.sax-message a:hover,
-li.sax-message a:focus,
-li.post-datetime a:hover,
-li.post-datetime a:focus {
+a.postlink:hover:focus,
+li.navbutton:hover:focus a,
+a.maintitle:hover:focus,
+a.nav:hover:focus,
+aside a:hover:focus,
+a.username:hover:focus,
+li.sax-message a:hover:focus,
+li.post-datetime a:hover:focus {
     text-decoration: none !important;
     background-size: 100% 1px;
 }
