@@ -29,12 +29,11 @@ if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekpo
 const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
 if (sidebar.parentElement.childElementCount == 2) {
     const parts = sidebar.textContent.split("Members:");
-    const before = parts[0];
-    const names = parts[1].trim().slice(0, -1).split(", ");
-    const links = names.map(name => {
+    const links = parts[1].trim().slice(0, -1).split(", ").map(name => {
         return "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
     });
-    sidebar.innerHTML = before + "<br>Members: " + links.join(", ") + ".";
+
+    sidebar.innerHTML = parts[0] + "<br>Members: " + links.join(", ") + ".";
 } else {
     const parts = document.getElementsByClassName("commasep-list")[0];
     for (var i = 1; i < parts.childElementCount + 1; i++) {
@@ -45,10 +44,8 @@ if (sidebar.parentElement.childElementCount == 2) {
 }
 
 //Flatten pips
-if (document.querySelectorAll(".pips, .profile_brief .gen:nth-child(6)").length > 0) {
-    var pips = document.querySelectorAll(".pips, .profile_brief .gen:nth-child(6)");
-    for (var i = 0; i < pips.length; i++) {
-        var pip = pips[i].firstElementChild.src;
-        pips[i].style = pip.includes("expert.png") ? "background: none;" : "width: " + 0.75 * pip.slice(0, -4).split("pips/").pop() + "em";
-    }
+var pips = document.querySelectorAll(".pips, .profile_brief .gen:nth-child(6)");
+for (var i = 0; i < pips.length; i++) {
+    var pip = pips[i].firstElementChild.src;
+    pips[i].style = pip.includes("expert.png") ? "background: none;" : "width: " + 0.75 * pip.slice(0, -4).split("pips/").pop() + "em";
 }
