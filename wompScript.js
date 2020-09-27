@@ -49,3 +49,35 @@ for (var i = 0; i < pips.length; i++) {
     var pip = pips[i].firstElementChild.src;
     pips[i].style = pip.includes("expert.png") ? "background: none;" : "width: " + 0.75 * pip.slice(0, -4).split("pips/").pop() + "em";
 }
+function globalCode(callback) {
+    const script = document.createElement("script");
+    script.innerHTML = `(${callback.toString()})()`;
+    document.body.appendChild(script);
+}
+
+if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
+    globalCode(() => {
+        //Fix YouTube Button Bug
+        window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
+        //Add Strike Button
+        window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
+        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]');
+        var container = document.createElement('span');
+        container.style.marginRight = "4px";
+        container.classList = "genmed code-button-wrap";
+        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='t' value='Strike' style='text-decoration: line-through;' onclick='bbstyle(20)' onmouseover=\"helpline(\'st\')\">";
+        document.querySelector(".code-buttons:first-child").appendChild(container);
+
+        //Add Mono Button
+        window["m_help"] = "Monospaced text (inline code): [mono]text[/mono] (alt+m)";
+        var container = container.cloneNode(true);
+        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='m' value='Mono' style='font-family: monospace;' onclick='bbstyle(22)' onmouseover=\"helpline(\'m\')\">";
+        document.querySelector(".code-buttons:first-child").appendChild(container);
+
+        //Add Horizontal Rule Button
+        window["h_help"] = "Horizontal rule (inline code): content[hr]content (alt+h)";
+        var container = container.cloneNode(true);
+        container.innerHTML = "<input type='button' class='button' accesskey='h' value='[hr]' onclick='bbsymbol(this.value)' onmouseover=\"helpline(\'h\')\">";
+        document.querySelector(".code-buttons:first-child").appendChild(container);
+    });
+}
