@@ -9,6 +9,7 @@ function escapeHtml(text) {
     return text.replace(/[&<>]/g, replaceTag);
 }
 
+
 //Shorter dates
 if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekposts") {
     var NodeList = document.getElementsByClassName("forumline")[0].firstElementChild.children;
@@ -24,6 +25,16 @@ if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekpo
         content.parentNode.insertBefore(document.createElement("br"), content.nextElementSibling);
     }
 }
+
+//Replace 'Say' button in SAX with animated arrow
+var arrow = document.createElement("button");
+arrow.type = "submit";
+arrow.classList.add("arrow");
+arrow.setAttribute("href", "#");
+arrow.innerHTML = "<div class='arrow-top'></div><div class='arrow-bottom'></div>";
+var sax = document.getElementsByName("saxin")[0];
+sax.firstElementChild.nextElementSibling.remove();
+sax.appendChild(arrow);
 
 //Make online names clickable
 const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
@@ -49,6 +60,7 @@ for (var i = 0; i < pips.length; i++) {
     var pip = pips[i].firstElementChild.src;
     pips[i].style = pip.includes("expert.png") ? "background: none;" : "width: " + 0.75 * pip.slice(0, -4).split("pips/").pop() + "em";
 }
+
 function globalCode(callback) {
     const script = document.createElement("script");
     script.innerHTML = `(${callback.toString()})()`;
