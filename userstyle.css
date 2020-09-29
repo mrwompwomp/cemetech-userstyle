@@ -347,3 +347,87 @@ div.code-buttons {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+
+.saxsubmit {
+    cursor: pointer;
+    margin-left: 10px !important;
+    padding: 2px 5px !important;
+}
+
+.arrow {
+    cursor: pointer;
+    height: 16px;
+    left: 10%;
+    position: relative;
+    margin: 0 0 2px 11px;
+    transform: translateX(-150%);
+    transition: transform 0.1s;
+    width: 14px;
+    border: none;
+    padding: 0;
+    background: none;
+    outline: none;
+}
+
+.arrow-top,
+.arrow-bottom {
+    background-color: #ccc;
+    height: 4px;
+    left: -5px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+.arrow-top:after,
+.arrow-bottom:after {
+    background-color: #fff;
+    content: '';
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: all 0.15s;
+}
+
+.arrow-top {
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+}
+
+.arrow-top:after {
+    left: 100%;
+    right: 0;
+}
+
+.arrow-bottom {
+    transform: rotate(-45deg);
+    transform-origin: top right;
+}
+
+.arrow-bottom:after {
+    left: 0;
+    right: 100%;
+    transition-delay: 0.15s;
+}
+
+.arrow:hover .arrow-top:after {
+    left: 0;
+    transition-delay: 0.15s;
+}
+
+.arrow:hover .arrow-bottom:after {
+    right: 0;
+    transition-delay: 0s;
+}
+
+.arrow:active {
+    transform: translateX(-150%) scale(0.9);
+}
+
+.arrow::-moz-focus-inner {
+    border: 0;
+}
+
+.navsearchsubmit{
+    cursor: pointer;
+}
