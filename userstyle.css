@@ -32,17 +32,17 @@ li.post-datetime a {
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 0 1px;
-    transition: background-size .3s;
+    transition: background-size .25s;
 }
 
-a.postlink:hover:focus,
-li.navbutton:hover:focus a,
-a.maintitle:hover:focus,
-a.nav:hover:focus,
-aside a:hover:focus,
-a.username:hover:focus,
-li.sax-message a:hover:focus,
-li.post-datetime a:hover:focus {
+a.postlink:hover,
+li.navbutton:hover a,
+a.maintitle:hover,
+a.nav:hover,
+aside a:hover,
+a.username:hover,
+li.sax-message a:hover,
+li.post-datetime a:hover {
     text-decoration: none !important;
     background-size: 100% 1px;
 }
@@ -57,7 +57,9 @@ li.navbutton:hover {
 /* hide useless stuff */
 
 .sidebar__section:nth-child(1),
-.sidebar__section:nth-child(3) {
+.sidebar__section:nth-child(3), 
+.topictail form, 
+.topictail div:last-child {
     display: none;
 }
 
