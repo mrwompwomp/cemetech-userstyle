@@ -7,13 +7,9 @@ div#hbot {
     background: #7B291B !important;
 }
 
-span.forum-action-button,
-span.post-action-button {
+.forum-action-button,
+.post-action-button {
     background: #c4c4c4 !important;
-}
-
-div.navsearch {
-    background: #eee !important;
 }
 
 
@@ -57,18 +53,21 @@ li.navbutton:hover {
 /* hide useless stuff */
 
 .sidebar__section:nth-child(1),
-.sidebar__section:nth-child(3), 
-.topictail form, 
-.topictail div:last-child {
+.sidebar__section:nth-child(3),
+.topictail form,
+.topictail div:last-child,
+#cemetech-at-a-glance .glance_boxes > div:nth-child(3),
+.sax-username[title^="saxjax@cemetech.net"],
+#mcmap > .chat,
+img[src$="/vote_lcap.gif"],
+img[src$="/vote_rcap.gif"],
+.copyright,
+.mainlowermiddle {
     display: none;
 }
 
 .sidebar__section:only-child {
     display: block;
-}
-
-#cemetech-at-a-glance .glance_boxes > div:nth-child(3) {
-    display: none;
 }
 
 
@@ -80,24 +79,20 @@ li.navbutton:hover {
 
 .post,
 .typepost,
-.helpline {
-    border: none !important;
-}
-
+.helpline,
 img.avatar,
 .profile_avatar img,
-.ppd_graph img {
+.ppd_graph img,
+.forum-action-button,
+.post-action-button,
+div.staffpix img,
+div.staffpixsmall img {
     border: none !important;
 }
 
 .post-action {
     border-top: 1px solid #bbb !important;
     border-left: 1px solid #bbb !important;
-}
-
-.forum-action-button,
-.post-action-button {
-    border: none !important;
 }
 
 table {
@@ -110,11 +105,6 @@ table {
 
 tr > th {
     border-bottom: 1px solid #7B291B !important;
-}
-
-div.staffpix img,
-div.staffpixsmall img {
-    border: none !important;
 }
 
 .sideheadtop,
@@ -138,17 +128,13 @@ div.staffpixsmall img {
     top: 1px !important;
 }
 
-.mainbody,
-.sideheadtop,
-.mainheadmiddle {
-    margin-bottom: 1px !important;
-}
-
 .sidebar__section {
     margin-top: 0.625rem !important;
     margin-bottom: 0 !important;
 }
 
+.mainbody,
+.mainbodynaked,
 .mainbodyinner {
     padding: 0 !important;
 }
@@ -158,20 +144,10 @@ div.staffpixsmall img {
 }
 
 
-/* fix stupid sax thing with double author tags */
-
-.sax-username[title^="saxjax@cemetech.net"] {
-    display: none;
-}
-
-
 /* remove backgrounds */
 
+.innersidebar,
 .navbread {
-    background: transparent !important;
-}
-
-.innersidebar {
     background: transparent !important;
 }
 
@@ -196,21 +172,6 @@ div.staffpixsmall img {
 .post-action-button:hover {
     box-shadow: -2px 2px 3px #aaa;
 }
-
-
-/* make back to top arrows more discreet */
-
-a[href="#top"],
-a[href="#Top"] {
-    visibility: hidden !important;
-}
-
-a[href="#top"]::before,
-a[href="#Top"]::before {
-    content: '↑';
-    visibility: visible;
-}
-
 
 /* wider sax */
 
@@ -254,13 +215,6 @@ ul.pagination li:hover {
 }
 
 
-/* dynmap stuff, because I can */
-
-#mcmap > .chat {
-    display: none;
-}
-
-
 /* polls */
 
 table.forumline table table table {
@@ -271,11 +225,6 @@ table.forumline table table table {
 
 table.forumline table table table > * {
     visibility: hidden;
-}
-
-img[src$="/vote_lcap.gif"],
-img[src$="/vote_rcap.gif"] {
-    display: none;
 }
 
 
@@ -301,6 +250,7 @@ img[src$="/vote_rcap.gif"] {
 
 .navsearch {
     margin-top: 0.375rem !important;
+    background: #eee !important;
 }
 
 
@@ -317,20 +267,6 @@ div.code-buttons {
     resize: vertical;
 }
 
-.mainbody {
-    padding: 0 !important;
-}
-
-.mainbody,
-.mainbodynaked {
-    padding: 0 !important;
-}
-
-.copyright,
-.mainlowermiddle {
-    display: none;
-}
-
 .navsearchinput {
     background: rgb(123, 41, 27) !important;
 }
@@ -339,6 +275,7 @@ div.code-buttons {
 .mainheadmiddle {
     padding: 0 !important;
     border-top: 0 !important;
+    margin-bottom: 1px !important;
 }
 
 .mainbody {
@@ -359,14 +296,13 @@ div.code-buttons {
 .arrow {
     cursor: pointer;
     height: 16px;
+    width: 14px;
     left: 10%;
     position: relative;
     margin: 0 0 2px 11px;
     transform: translateX(-150%);
     transition: transform 0.1s;
-    width: 14px;
     border: none;
-    padding: 0;
     background: none;
     outline: none;
 }
@@ -387,7 +323,6 @@ div.code-buttons {
     content: '';
     height: 100%;
     position: absolute;
-    top: 0;
     transition: all 0.15s;
 }
 
@@ -426,10 +361,6 @@ div.code-buttons {
     transform: translateX(-150%) scale(0.9);
 }
 
-.arrow::-moz-focus-inner {
-    border: 0;
-}
-
-.navsearchsubmit{
+.navsearchsubmit {
     cursor: pointer;
 }
