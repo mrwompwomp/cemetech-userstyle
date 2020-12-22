@@ -73,7 +73,7 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
         window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
         //Add Strike Button
         window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
-        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]');
+        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]');
         var container = document.createElement('span');
         container.style.marginRight = "4px";
         container.classList = "genmed code-button-wrap";
@@ -90,6 +90,12 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
         window["h_help"] = "Horizontal rule (inline code): content[hr]content (alt+h)";
         var container = container.cloneNode(true);
         container.innerHTML = "<input type='button' class='button' accesskey='h' value='[hr]' onclick='bbsymbol(this.value)' onmouseover=\"helpline(\'h\')\">";
+        document.querySelector(".code-buttons:first-child").appendChild(container);
+        
+        //Add Center Button
+        window["j_help"] = "Centered text (inline code): [center]text[/center] (alt+j)";
+        var container = container.cloneNode(true);
+        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='j' value='Center' style='text-align: center; margin-top: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
         document.querySelector(".code-buttons:first-child").appendChild(container);
     });
 }
