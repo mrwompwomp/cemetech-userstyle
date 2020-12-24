@@ -71,37 +71,33 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
     globalCode(() => {
         //Fix YouTube Button Bug
         window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
+
         //Add Strike Button
         window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
         bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]');
         var container = document.createElement('span');
         container.style.marginRight = "4px";
         container.classList = "genmed code-button-wrap";
-        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='t' value='Strike' style='text-decoration: line-through;' onclick='bbstyle(20)' onmouseover=\"helpline(\'st\')\">";
-        document.querySelector(".code-buttons:first-child").appendChild(container);
+        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(20)' onmouseover=\"helpline(\'st\')\">";
 
         //Add Mono Button
         window["m_help"] = "Monospaced text (inline code): [mono]text[/mono] (alt+m)";
-        var container = container.cloneNode(true);
-        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='m' value='Mono' style='font-family: monospace;' onclick='bbstyle(22)' onmouseover=\"helpline(\'m\')\">";
-        document.querySelector(".code-buttons:first-child").appendChild(container);
+        container.innerHTML += "<input type='button' name='addbbcode22' class='button' accesskey='m' value='Mono' style='font-family: monospace; margin-right: 4px;' onclick='bbstyle(22)' onmouseover=\"helpline(\'m\')\">";
 
         //Add Horizontal Rule Button
         window["h_help"] = "Horizontal rule (inline code): content[hr]content (alt+h)";
-        var container = container.cloneNode(true);
-        container.innerHTML = "<input type='button' class='button' accesskey='h' value='[hr]' onclick='bbsymbol(this.value)' onmouseover=\"helpline(\'h\')\">";
-        document.querySelector(".code-buttons:first-child").appendChild(container);
-        
+        container.innerHTML += "<input type='button' class='button' accesskey='h' value='[hr]' style='margin-right: 4px;' onclick='bbsymbol(this.value)' onmouseover=\"helpline(\'h\')\">";
+
         //Add Center Button
         window["j_help"] = "Centered text (inline code): [center]text[/center] (alt+j)";
-        var container = container.cloneNode(true);
-        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='j' value='Center' style='text-align: center; margin-top: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
+        container.innerHTML += "<input type='button' name='addbbcode22' class='button' accesskey='j' value='Center' style='text-align: center; margin-top: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
         document.querySelector(".code-buttons:first-child").appendChild(container);
     });
-    
+
     //Add color picker for color tag in post editor
-    i = document.createElement("input");
+    var i = document.createElement("input");
     i.type = "color";
     i.setAttribute("onchange", "bbfontstyle('[color=' + this.value + ']', '[/color]');");
+    i.setAttribute("onmouseover", "helpline('s')");
     document.getElementsByName("addbbcode19")[0].parentElement.appendChild(i);
 }
