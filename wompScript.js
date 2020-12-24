@@ -98,4 +98,10 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
         container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='j' value='Center' style='text-align: center; margin-top: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
         document.querySelector(".code-buttons:first-child").appendChild(container);
     });
+    
+    //Add color picker for color tag in post editor
+    i = document.createElement("input");
+    i.type = "color";
+    i.setAttribute("onchange", "bbfontstyle('[color=' + this.value + ']', '[/color]');");
+    document.getElementsByName("addbbcode19")[0].parentElement.appendChild(i);
 }
