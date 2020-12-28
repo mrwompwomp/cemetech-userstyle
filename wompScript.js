@@ -74,11 +74,10 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
 
         //Add Strike Button
         window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
-        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]');
+        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]');
         var container = document.createElement('span');
-        container.style.marginRight = "4px";
         container.classList = "genmed code-button-wrap";
-        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(20)' onmouseover=\"helpline(\'st\')\">";
+        container.innerHTML = "<input type='button' name='addbbcode20' class='button' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(20)' onmouseover=\"helpline(\'st\')\">";
 
         //Add Mono Button
         window["m_help"] = "Monospaced text (inline code): [mono]text[/mono] (alt+m)";
@@ -90,12 +89,12 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
 
         //Add Center Button
         window["j_help"] = "Centered text (inline code): [center]text[/center] (alt+j)";
-        container.innerHTML += "<input type='button' name='addbbcode22' class='button' accesskey='j' value='Center' style='text-align: center; margin-top: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
+        container.innerHTML += "<input type='button' name='addbbcode24' class='button' accesskey='j' value='Center' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
         
         //Add Rainbow Button
         window["r_help"] = "Rainbow text (inline code): [rainbow]text[/rainbow] (alt+k)";
-        container.innerHTML += "<input type='button' name='addbbcode22' class='button' accesskey='r' value='✨Rainbow✨' style='margin-top: 4px;text-align: center;font-family: sans-serif;padding-bottom: 4px;padding-right: 0px;text-transform: uppercase;color: #fff;text-shadow: -1px 1px #ef3550, -2px 2px #f48fb1, -3px 3px #7e57c2, -4px 4px #2196f3, -5px 5px #26c6da, -6px 6px #43a047, -7px 7px #eeff41, -8px 8px #f9a825, -9px 9px #ff5722;background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);border-radius: 2px;' onclick='bbstyle(26)' onmouseover=\"helpline(\'j\')\">";
-        
+        container.innerHTML += "<input type='button' name='addbbcode26' class='button' accesskey='r' value='✨RAINBOW✨' style='margin: 4px 4px 0 0; padding: 0 0 4px 0;color: #fff; text-shadow: -1px 1px #ef3550, -2px 2px #f48fb1, -3px 3px #7e57c2, -4px 4px #2196f3, -5px 5px #26c6da, -6px 6px #43a047, -7px 7px #eeff41, -8px 8px #f9a825, -9px 9px #ff5722; background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet); border-radius: 2px;' onclick='bbstyle(26)' onmouseover=\"helpline(\'r\')\">";
+
         document.querySelector(".code-buttons:first-child").appendChild(container);
     });
 
