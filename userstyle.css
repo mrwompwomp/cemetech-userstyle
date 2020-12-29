@@ -364,3 +364,12 @@ div.code-buttons {
 .navsearchsubmit {
     cursor: pointer;
 }
+
+.rainbow-button {
+    margin: 4px 4px 0 0;
+    padding: 0 0 4px 0;
+    color: #fff;
+    text-shadow: -1px 1px #ef3550, -2px 2px #f48fb1, -3px 3px #7e57c2, -4px 4px #2196f3, -5px 5px #26c6da, -6px 6px #43a047, -7px 7px #eeff41, -8px 8px #f9a825, -9px 9px #ff5722;
+    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
+    border-radius: 2px;
+}
