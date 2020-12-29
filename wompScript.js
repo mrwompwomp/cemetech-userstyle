@@ -74,7 +74,7 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
 
         //Add Strike Button
         window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
-        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]');
+        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]', '[md5]', '[/md5]');
         var container = document.createElement('span');
         container.classList = "genmed code-button-wrap";
         container.innerHTML = "<input type='button' name='addbbcode20' class='button' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(20)' onmouseover=\"helpline(\'st\')\">";
@@ -92,10 +92,24 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
         container.innerHTML += "<input type='button' name='addbbcode24' class='button' accesskey='j' value='Center' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
         
         //Add Rainbow Button
-        window["r_help"] = "Rainbow text (inline code): [rainbow]text[/rainbow] (alt+k)";
-        container.innerHTML += "<input type='button' name='addbbcode26' class='button' accesskey='r' value='✨RAINBOW✨' style='margin: 4px 4px 0 0; padding: 0 0 4px 0;color: #fff; text-shadow: -1px 1px #ef3550, -2px 2px #f48fb1, -3px 3px #7e57c2, -4px 4px #2196f3, -5px 5px #26c6da, -6px 6px #43a047, -7px 7px #eeff41, -8px 8px #f9a825, -9px 9px #ff5722; background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet); border-radius: 2px;' onclick='bbstyle(26)' onmouseover=\"helpline(\'r\')\">";
+        window["r_help"] = "Rainbow text (inline code): [rainbow]text[/rainbow] (alt+r)";
+        container.innerHTML += "<input type='button' name='addbbcode26' class='rainbow-button' accesskey='r' value='✨RAINBOW✨' onclick='bbstyle(26)' onmouseover=\"helpline(\'r\')\">";
 
+        //Add Sup Button
+        window["sup_help"] = "Superscript text (inline code): [sup]text[/sup] (alt+k)";
+        container.innerHTML += "<input type='button' name='addbbcode28' class='button' accesskey='k' value='Sup' style='margin: 4px 4px 8px 0;padding-bottom: 9px; vertical-align: super; font-size: smaller;' onclick='bbstyle(28)' onmouseover=\"helpline(\'sup\')\">";
+        
+        //Add Sub Button
+        window["sub_help"] = "Subscript text (inline code): [sub]text[/sub] (alt+g)";
+        container.innerHTML += "<input type='button' name='addbbcode30' class='button' accesskey='g' value='Sub' style='margin: 4px 4px 0 0; padding-top: 9px; vertical-align: sub; font-size: smaller;' onclick='bbstyle(30)' onmouseover=\"helpline(\'sub\')\">";
+        
+        //Add MD5 Button
+        window["v_help"] = "MD5 hashing (inline code): [md5]text[/md5] (alt+v)";
+        container.innerHTML += "<input type='button' name='addbbcode32' class='button' accesskey='v' value='MD5' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(32)' onmouseover=\"helpline(\'v\')\">";
+        
         document.querySelector(".code-buttons:first-child").appendChild(container);
+        
+
     });
 
     //Add color picker for color tag in post editor
