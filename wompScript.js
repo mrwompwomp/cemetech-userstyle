@@ -39,9 +39,13 @@ sax.appendChild(arrow);
 //Make online names clickable
 const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
 if (sidebar.parentElement.childElementCount == 2) {
+    const sideContent = sidebar.innerHTML;
     const parts = sidebar.textContent.split("Members:");
     const links = parts[1].trim().slice(0, -1).split(", ").map(name => {
-        return "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+        loc = sideContent.search(name);
+        specialTitle = sideContent.substring(loc - 2, loc - 10);
+        specialTitle = specialTitle == "mincolor" ? "admincolor" : specialTitle == "modcolor" ? "modcolor" : "";
+        return "<a class='" + specialTitle + "'href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
     });
 
     sidebar.innerHTML = parts[0] + "<br>Members: " + links.join(", ") + ".";
@@ -50,7 +54,8 @@ if (sidebar.parentElement.childElementCount == 2) {
     for (var i = 1; i < parts.childElementCount + 1; i++) {
         var node = parts.childNodes[i].firstElementChild;
         var name = node.textContent;
-        node.innerHTML = "<a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+        specialTitle = node.classList[0] ? node.classList[0] : "";
+        node.innerHTML = "<a class='" + specialTitle + "' href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
     }
 }
 
