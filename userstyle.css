@@ -373,3 +373,7 @@ div.code-buttons {
     background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
     border-radius: 2px;
 }
+
+.modcolor{
+    background: gray;
+}
