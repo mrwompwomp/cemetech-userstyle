@@ -79,14 +79,14 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
 
         //Add Strike Button
         window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
-        bbtags.push('[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]', '[md5]', '[/md5]');
+        bbtags.push('', '', '[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]', '[md5]', '[/md5]', '[reverse]', '[/reverse]');
         var container = document.createElement('span');
         container.classList = "genmed code-button-wrap";
-        container.innerHTML = "<input type='button' name='addbbcode20' class='button' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(20)' onmouseover=\"helpline(\'st\')\">";
+        container.innerHTML = "<input type='button' name='addbbcode22' class='button' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(22)' onmouseover=\"helpline(\'st\')\">";
 
         //Add Mono Button
         window["m_help"] = "Monospaced text (inline code): [mono]text[/mono] (alt+m)";
-        container.innerHTML += "<input type='button' name='addbbcode22' class='button' accesskey='m' value='Mono' style='font-family: monospace; margin-right: 4px;' onclick='bbstyle(22)' onmouseover=\"helpline(\'m\')\">";
+        container.innerHTML += "<input type='button' name='addbbcode24' class='button' accesskey='m' value='Mono' style='font-family: monospace; margin-right: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'m\')\">";
 
         //Add Horizontal Rule Button
         window["h_help"] = "Horizontal rule (inline code): content[hr]content (alt+h)";
@@ -94,26 +94,29 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
 
         //Add Center Button
         window["j_help"] = "Centered text (inline code): [center]text[/center] (alt+j)";
-        container.innerHTML += "<input type='button' name='addbbcode24' class='button' accesskey='j' value='Center' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(24)' onmouseover=\"helpline(\'j\')\">";
-        
+        container.innerHTML += "<input type='button' name='addbbcode26' class='button' accesskey='j' value='Center' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(26)' onmouseover=\"helpline(\'j\')\">";
+
         //Add Rainbow Button
         window["r_help"] = "Rainbow text (inline code): [rainbow]text[/rainbow] (alt+r)";
-        container.innerHTML += "<input type='button' name='addbbcode26' class='rainbow-button' accesskey='r' value='✨RAINBOW✨' onclick='bbstyle(26)' onmouseover=\"helpline(\'r\')\">";
+        container.innerHTML += "<input type='button' name='addbbcode28' class='rainbow-button' accesskey='r' value='✨RAINBOW✨' onclick='bbstyle(28)' onmouseover=\"helpline(\'r\')\">";
 
         //Add Sup Button
         window["sup_help"] = "Superscript text (inline code): [sup]text[/sup] (alt+k)";
-        container.innerHTML += "<input type='button' name='addbbcode28' class='button' accesskey='k' value='Sup' style='margin: 4px 4px 8px 0;padding-bottom: 9px; vertical-align: super; font-size: smaller;' onclick='bbstyle(28)' onmouseover=\"helpline(\'sup\')\">";
-        
+        container.innerHTML += "<input type='button' name='addbbcode30' class='button' accesskey='k' value='Sup' style='margin: 4px 4px 8px 0;padding-bottom: 9px; vertical-align: super; font-size: smaller;' onclick='bbstyle(30)' onmouseover=\"helpline(\'sup\')\">";
+
         //Add Sub Button
         window["sub_help"] = "Subscript text (inline code): [sub]text[/sub] (alt+g)";
-        container.innerHTML += "<input type='button' name='addbbcode30' class='button' accesskey='g' value='Sub' style='margin: 4px 4px 0 0; padding-top: 9px; vertical-align: sub; font-size: smaller;' onclick='bbstyle(30)' onmouseover=\"helpline(\'sub\')\">";
-        
+        container.innerHTML += "<input type='button' name='addbbcode32' class='button' accesskey='g' value='Sub' style='margin: 4px 4px 0 0; padding-top: 9px; vertical-align: sub; font-size: smaller;' onclick='bbstyle(32)' onmouseover=\"helpline(\'sub\')\">";
+
         //Add MD5 Button
         window["v_help"] = "MD5 hashing (inline code): [md5]text[/md5] (alt+v)";
-        container.innerHTML += "<input type='button' name='addbbcode32' class='button' accesskey='v' value='MD5' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(32)' onmouseover=\"helpline(\'v\')\">";
+        container.innerHTML += "<input type='button' name='addbbcode34' class='button' accesskey='v' value='MD5' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(34)' onmouseover=\"helpline(\'v\')\">";
+
+        //Add Reverse Button
+        window["z_help"] = "Reverse text (inline code): [reverse]text[/reverse] (alt+z)";
+        container.innerHTML += "<input type='button' name='addbbcode36' class='button' accesskey='z' value='Reverse' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(36)' onmouseover=\"helpline(\'z\')\">";
         
         document.querySelector(".code-buttons:first-child").appendChild(container);
-        
 
     });
 
