@@ -77,9 +77,7 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
         //Fix YouTube Button Bug
         window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
 
-        //Add Strike Button
-        window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
-        bbtags.push('', '', '[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]', '[md5]', '[/md5]', '[reverse]', '[/reverse]');
+        bbtags.push('', '', '[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]', '[md5]', '[/md5]', '[reverse]', '[/reverse]', '[serif]', '[/serif]', '[sans]', '[/sans]');
         var container = document.createElement('span');
         
         //Add Strike Button        
@@ -117,6 +115,15 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
         //Add Reverse Button
         window["z_help"] = "Reverse text (inline code): [reverse]text[/reverse] (alt+z)";
         container.innerHTML += "<input type='button' name='addbbcode36' accesskey='z' value='Reverse' style='margin: 4px 4px 0 0;' onclick='bbstyle(36)' onmouseover=\"helpline(\'z\')\">";
+
+        //Add Serif Button
+        window["x_help"] = "Serif text (inline code): [serif]text[/serif] (alt+x)";
+        container.innerHTML += "<input type='button' name='addbbcode38' accesskey='z' value='Serif' style='font-family: serif; margin: 4px 4px 0 0;' onclick='bbstyle(38)' onmouseover=\"helpline(\'x\')\">";
+
+        //Add Sans Button
+        window["n_help"] = "Sans-serif text (inline code): [sans]text[/sans] (alt+n)";
+        container.innerHTML += "<input type='button' name='addbbcode40' accesskey='n' value='Sans' style='font-family: sans-serif; margin: 4px 4px 0 0;' onclick='bbstyle(40)' onmouseover=\"helpline(\'n\')\">";
+
         document.querySelector(".code-buttons:first-child").appendChild(container);
 
     });
