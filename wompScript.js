@@ -11,25 +11,22 @@ function escapeHtml(text) {
 
 function unescapeEntities(html) {
     var txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
+    txt.innerHTML = html.textContent;
+    html.textContent = txt.value;
 }
 
 //Fix unicode in post titles (stolen from iPhoenix)
 if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
-    const mainTitle = document.querySelector(".mainheadmiddle.roundedtop .maintitle");
-    mainTitle.textContent = unescapeEntities(mainTitle.textContent);
-    const pageTitle = document.querySelector("head > title");
-    pageTitle.textContent = unescapeEntities(pageTitle.textContent);
-    const firstPostTitle = document.getElementsByClassName("post-subject indextramed")[0];
-    firstPostTitle.textContent = unescapeEntities(firstPostTitle.textContent);
+    unescapeEntities(document.querySelector(".mainheadmiddle.roundedtop .maintitle"));
+    unescapeEntities(document.querySelector("head > title"));
+    unescapeEntities(document.getElementsByClassName("post-subject indextramed")[0]);
 }
 
 //Fix unicode in post titles while listing topics in a subforum and while searching
 if (RegExp('cemetech.net\/forum\/(viewforum|search).php').test(location.href)) {
     const titleLinks = Array.from(document.querySelectorAll(".topictitle > a"));
     titleLinks.forEach(titleLink => {
-        titleLink.innerText = unescapeEntities(titleLink.innerText);
+        unescapeEntities(titleLink);
     })
 }
 
