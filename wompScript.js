@@ -21,18 +21,13 @@ if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
     mainTitle.textContent = unescapeEntities(mainTitle.textContent);
     const pageTitle = document.querySelector("head > title");
     pageTitle.textContent = unescapeEntities(pageTitle.textContent);
-}
-//Fix unicode in post titles while listing topics in a subforum
-if (location.href.includes("cemetech.net/forum/viewforum.php")) {
-    const titleLinks = Array.from(document.querySelectorAll(".topictitle > a"));
-    titleLinks.forEach(titleLink => {
-        titleLink.innerText = unescapeEntities(titleLink.innerText);
-    })
+    const firstPostTitle = document.getElementsByClassName("post-subject indextramed")[0];
+    firstPostTitle.textContent = unescapeEntities(firstPostTitle.textContent);
 }
 
-//Fix unicode in post titles while searching
-if (location.href.includes("cemetech.net/forum/search.php")) {
-    const titleLinks = Array.from(document.querySelectorAll(".topictitle > a.topictitle"));
+//Fix unicode in post titles while listing topics in a subforum and while searching
+if (RegExp('cemetech.net\/forum\/(viewforum|search).php').test(location.href)) {
+    const titleLinks = Array.from(document.querySelectorAll(".topictitle > a"));
     titleLinks.forEach(titleLink => {
         titleLink.innerText = unescapeEntities(titleLink.innerText);
     })
