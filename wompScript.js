@@ -9,9 +9,37 @@ function escapeHtml(text) {
     return text.replace(/[&<>]/g, replaceTag);
 }
 
+function unescapeEntities(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+
+//Fix unicode in post titles (stolen from iPhoenix)
+if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
+    const mainTitle = document.querySelector(".mainheadmiddle.roundedtop .maintitle");
+    mainTitle.textContent = unescapeEntities(mainTitle.textContent);
+    const pageTitle = document.querySelector("head > title");
+    pageTitle.textContent = unescapeEntities(pageTitle.textContent);
+}
+//Fix unicode in post titles while listing topics in a subforum
+if (location.href.includes("cemetech.net/forum/viewforum.php")) {
+    const titleLinks = Array.from(document.querySelectorAll(".topictitle > a"));
+    titleLinks.forEach(titleLink => {
+        titleLink.innerText = unescapeEntities(titleLink.innerText);
+    })
+}
+
+//Fix unicode in post titles while searching
+if (location.href.includes("cemetech.net/forum/search.php")) {
+    const titleLinks = Array.from(document.querySelectorAll(".topictitle > a.topictitle"));
+    titleLinks.forEach(titleLink => {
+        titleLink.innerText = unescapeEntities(titleLink.innerText);
+    })
+}
 
 //Shorter dates
-if (location.href == "https://www.cemetech.net/forum/search.php?search_id=weekposts") {
+if (location.href.includes("cemetech.net/forum/search.php")) {
     var NodeList = document.getElementsByClassName("forumline")[0].firstElementChild.children;
     for (var i = 2; i < NodeList.length; i++) {
         var content = NodeList[i].lastElementChild.firstElementChild.firstElementChild.firstElementChild;
@@ -72,7 +100,7 @@ function globalCode(callback) {
     document.body.appendChild(script);
 }
 
-if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
+if (location.href.includes("cemetech.net/forum/posting.php")) {
     globalCode(() => {
         //Fix YouTube Button Bug
         window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
@@ -137,7 +165,7 @@ if (location.href.includes("https://www.cemetech.net/forum/posting.php")) {
 }
 
 //Restyle UTI pages
-if (window.location.href.startsWith("https://www.cemetech.net/projects/uti")){
+if (location.href.includes("cemetech.net/projects/uti")) {
     var style = document.createElement("style");
     style.innerHTML = "tr>th{border-bottom: 1px solid #254e6f !important;}section.sidebar__section,div.mainlowermiddle,div.mainheadmiddle,div#hbot,.mainbody{background:#254e6f !important;}.sidebar__section,#hbot{border: 2px solid #19364d}a{color: #222}a:hover{color:#34498B}.maintitle:hover,.sidebar__section-body a:hover,.sidebar__section-header a:hover{color: white}.navsearchinput{background:#34498B !important;}img[src*='lang_english'],.navsearchsubmit{filter:hue-rotate(194deg);}.sax-message a{background:#1c264a}";
     document.body.append(style);
