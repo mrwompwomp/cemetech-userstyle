@@ -91,69 +91,80 @@ function globalCode(callback) {
     script.innerHTML = `(${callback.toString()})()`;
     document.body.appendChild(script);
 }
-
 if (location.href.includes("cemetech.net/forum/posting.php")) {
-    globalCode(() => {
-        //Fix YouTube Button Bug
-        window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
+    const TLMBug = document.querySelector("#page_content_parent > div.mainbody > div > table > tbody > tr > td > span");
+    if (TLMBug.textContent == "Sorry, but only  can reply to posts in this forum.") {
+        TLMBug.innerHTML = "Sorry, the post you attempted to quote has been deleted. <span style='font-size: 6px'>This error message was sponsored by TheLastMillennial</span>";
+    } else {
+        globalCode(() => {
+            //Fix YouTube Button Bug
+            window["y_help"] = "Youtube video: [youtube]Youtube URL[/youtube] (alt+y)";
 
-        bbtags.push('', '', '[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]', '[md5]', '[/md5]', '[reverse]', '[/reverse]', '[serif]', '[/serif]', '[sans]', '[/sans]');
-        var container = document.createElement('span');
-        
-        //Add Strike Button        
-        window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
-        container.innerHTML = "<input type='button' name='addbbcode22' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(22)' onmouseover=\"helpline(\'st\')\">";
+            bbtags.push('', '', '[strike]', '[/strike]', '[mono]', '[/mono]', '[center]', '[/center]', '[rainbow]', '[/rainbow]', '[sup]', '[/sup]', '[sub]', '[/sub]', '[md5]', '[/md5]', '[reverse]', '[/reverse]', '[serif]', '[/serif]', '[sans]', '[/sans]');
+            var container = document.createElement('span');
 
-        //Add Mono Button
-        window["m_help"] = "Monospaced text (inline code): [mono]text[/mono] (alt+m)";
-        container.innerHTML += "<input type='button' name='addbbcode24' accesskey='m' value='Mono' style='font-family: monospace; margin-right: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'m\')\">";
+            //Add Strike Button        
+            window["st_help"] = "Strikethrough text: [strike]text[/strike] (alt+t)";
+            container.innerHTML = "<input type='button' name='addbbcode22' accesskey='t' value='Strike' style='text-decoration: line-through; margin-right: 4px;' onclick='bbstyle(22)' onmouseover=\"helpline(\'st\')\">";
 
-        //Add Horizontal Rule Button
-        window["h_help"] = "Horizontal rule: content[hr]content (alt+h)";
-        container.innerHTML += "<input type='button' accesskey='h' value='[hr]' style='margin-right: 4px;' onclick='bbsymbol(this.value)' onmouseover=\"helpline(\'h\')\">";
+            //Add Mono Button
+            window["m_help"] = "Monospaced text (inline code): [mono]text[/mono] (alt+m)";
+            container.innerHTML += "<input type='button' name='addbbcode24' accesskey='m' value='Mono' style='font-family: monospace; margin-right: 4px;' onclick='bbstyle(24)' onmouseover=\"helpline(\'m\')\">";
 
-        //Add Center Button
-        window["j_help"] = "Centered text (inline code): [center]text[/center] (alt+j)";
-        container.innerHTML += "<input type='button' name='addbbcode26' accesskey='j' value='Center' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(26)' onmouseover=\"helpline(\'j\')\">";
+            //Add Horizontal Rule Button
+            window["h_help"] = "Horizontal rule: content[hr]content (alt+h)";
+            container.innerHTML += "<input type='button' accesskey='h' value='[hr]' style='margin-right: 4px;' onclick='bbsymbol(this.value)' onmouseover=\"helpline(\'h\')\">";
 
-        //Add Rainbow Button
-        window["r_help"] = "Rainbow text (inline code): [rainbow]text[/rainbow] (alt+r)";
-        container.innerHTML += "<input type='button' name='addbbcode28' class='rainbow-button' accesskey='r' value='✨RAINBOW✨' onclick='bbstyle(28)' onmouseover=\"helpline(\'r\')\">";
+            //Add Center Button
+            window["j_help"] = "Centered text (inline code): [center]text[/center] (alt+j)";
+            container.innerHTML += "<input type='button' name='addbbcode26' accesskey='j' value='Center' style='text-align: center; margin: 4px 4px 0 0;' onclick='bbstyle(26)' onmouseover=\"helpline(\'j\')\">";
 
-        //Add Sup Button
-        window["sup_help"] = "Superscript text (inline code): [sup]text[/sup] (alt+k)";
-        container.innerHTML += "<input type='button' name='addbbcode30' accesskey='k' value='Sup' style='margin: 4px 4px 8px 0;padding-bottom: 9px; vertical-align: super; font-size: smaller;' onclick='bbstyle(30)' onmouseover=\"helpline(\'sup\')\">";
+            //Add Rainbow Button
+            window["r_help"] = "Rainbow text (inline code): [rainbow]text[/rainbow] (alt+r)";
+            container.innerHTML += "<input type='button' name='addbbcode28' class='rainbow-button' accesskey='r' value='✨RAINBOW✨' onclick='bbstyle(28)' onmouseover=\"helpline(\'r\')\">";
 
-        //Add Sub Button
-        window["sub_help"] = "Subscript text (inline code): [sub]text[/sub] (alt+g)";
-        container.innerHTML += "<input type='button' name='addbbcode32' accesskey='g' value='Sub' style='margin: 4px 4px 0 0; padding-top: 9px; vertical-align: sub; font-size: smaller;' onclick='bbstyle(32)' onmouseover=\"helpline(\'sub\')\">";
+            //Add Sup Button
+            window["sup_help"] = "Superscript text (inline code): [sup]text[/sup] (alt+k)";
+            container.innerHTML += "<input type='button' name='addbbcode30' accesskey='k' value='Sup' style='margin: 4px 4px 8px 0;padding-bottom: 9px; vertical-align: super; font-size: smaller;' onclick='bbstyle(30)' onmouseover=\"helpline(\'sup\')\">";
 
-        //Add MD5 Button
-        window["v_help"] = "MD5 hashing (inline code): [md5]text[/md5] (alt+v)";
-        container.innerHTML += "<input type='button' name='addbbcode34' accesskey='v' value='MD5' style='margin: 4px 4px 0 0;' onclick='bbstyle(34)' onmouseover=\"helpline(\'v\')\">";
+            //Add Sub Button
+            window["sub_help"] = "Subscript text (inline code): [sub]text[/sub] (alt+g)";
+            container.innerHTML += "<input type='button' name='addbbcode32' accesskey='g' value='Sub' style='margin: 4px 4px 0 0; padding-top: 9px; vertical-align: sub; font-size: smaller;' onclick='bbstyle(32)' onmouseover=\"helpline(\'sub\')\">";
 
-        //Add Reverse Button
-        window["z_help"] = "Reverse text (inline code): [reverse]text[/reverse] (alt+z)";
-        container.innerHTML += "<input type='button' name='addbbcode36' accesskey='z' value='Reverse' style='margin: 4px 4px 0 0;' onclick='bbstyle(36)' onmouseover=\"helpline(\'z\')\">";
+            //Add MD5 Button
+            window["v_help"] = "MD5 hashing (inline code): [md5]text[/md5] (alt+v)";
+            container.innerHTML += "<input type='button' name='addbbcode34' accesskey='v' value='MD5' style='margin: 4px 4px 0 0;' onclick='bbstyle(34)' onmouseover=\"helpline(\'v\')\">";
 
-        //Add Serif Button
-        window["x_help"] = "Serif text (inline code): [serif]text[/serif] (alt+x)";
-        container.innerHTML += "<input type='button' name='addbbcode38' accesskey='z' value='Serif' style='font-family: serif; margin: 4px 4px 0 0;' onclick='bbstyle(38)' onmouseover=\"helpline(\'x\')\">";
+            //Add Reverse Button
+            window["z_help"] = "Reverse text (inline code): [reverse]text[/reverse] (alt+z)";
+            container.innerHTML += "<input type='button' name='addbbcode36' accesskey='z' value='Reverse' style='margin: 4px 4px 0 0;' onclick='bbstyle(36)' onmouseover=\"helpline(\'z\')\">";
 
-        //Add Sans Button
-        window["n_help"] = "Sans-serif text (inline code): [sans]text[/sans] (alt+n)";
-        container.innerHTML += "<input type='button' name='addbbcode40' accesskey='n' value='Sans' style='font-family: sans-serif; margin: 4px 4px 0 0;' onclick='bbstyle(40)' onmouseover=\"helpline(\'n\')\">";
+            //Add Serif Button
+            window["x_help"] = "Serif text (inline code): [serif]text[/serif] (alt+x)";
+            container.innerHTML += "<input type='button' name='addbbcode38' accesskey='z' value='Serif' style='font-family: serif; margin: 4px 4px 0 0;' onclick='bbstyle(38)' onmouseover=\"helpline(\'x\')\">";
 
-        document.querySelector(".code-buttons:first-child").appendChild(container);
+            //Add Sans Button
+            window["n_help"] = "Sans-serif text (inline code): [sans]text[/sans] (alt+n)";
+            container.innerHTML += "<input type='button' name='addbbcode40' accesskey='n' value='Sans' style='font-family: sans-serif; margin: 4px 4px 0 0;' onclick='bbstyle(40)' onmouseover=\"helpline(\'n\')\">";
 
-    });
+            document.querySelector(".code-buttons:first-child").appendChild(container);
 
-    //Add color picker for color tag in post editor
-    var i = document.createElement("input");
-    i.type = "color";
-    i.setAttribute("onchange", "bbfontstyle('[color=' + this.value + ']', '[/color]');");
-    i.setAttribute("onmouseover", "helpline('s')");
-    document.getElementsByName("addbbcode19")[0].parentElement.appendChild(i);
+            //Add header style dropdown
+            window["he_help"] = "Header style: [h1]text[/h1]";
+            var headerContainer = document.createElement('span');
+            headerContainer.innerHTML = "Header style: <select name='addbbcode42' onchange=\"bbfontstyle('[h' + this.selectedIndex + ']', '[/h' + this.selectedIndex + ']');this.selectedIndex=0;\" onmouseover=\"helpline(\'he\')\"><option value='Default' selected>Default</option><option value='h1'>h1</option><option value='h2'>h2</option><option value='h3'>h3</option><option value='h4'>h4</option><option value='h5'>h5</option><option value='h6'>h6</option></select>";
+            //Insert it before 'Close Tags'
+            DOMInsertLoc = document.querySelector(".code-buttons:nth-of-type(2)");
+            DOMInsertLoc.insertBefore(headerContainer, DOMInsertLoc.lastChild.previousSibling);
+        });
+
+        //Add color picker for color tag in post editor
+        var i = document.createElement("input");
+        i.type = "color";
+        i.setAttribute("onchange", "bbfontstyle('[color=' + this.value + ']', '[/color]');");
+        i.setAttribute("onmouseover", "helpline('s')");
+        document.getElementsByName("addbbcode19")[0].parentElement.appendChild(i);
+    }
 }
 
 //Restyle UTI pages
