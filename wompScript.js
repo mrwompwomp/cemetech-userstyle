@@ -23,12 +23,8 @@ if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
 }
 
 //Fix unicode in post titles while listing topics in a subforum and while searching
-if (RegExp('cemetech.net\/forum\/(viewforum|search).php').test(location.href)) {
-    const titleLinks = Array.from(document.querySelectorAll(".topictitle > a"));
-    titleLinks.forEach(titleLink => {
-        unescapeEntities(titleLink);
-    })
-}
+if (RegExp('cemetech.net\/forum\/(viewforum|search).php').test(location.href)) 
+    Array.from(document.querySelectorAll(".topictitle > a")).forEach(titleLink => unescapeEntities(titleLink));
 
 //Shorter dates
 if (location.href.includes("cemetech.net/forum/search.php")) {
@@ -58,39 +54,41 @@ sax.appendChild(arrow);
 
 //Make online names clickable
 const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
-if (sidebar.parentElement.childElementCount == 2) {
-    const sideContent = sidebar.innerHTML;
-    const parts = sidebar.textContent.split("Members:");
-    const links = parts[1].trim().slice(0, -1).split(", ").map(name => {
-        loc = sideContent.search(name);
-        specialTitle = sideContent.substring(loc - 2, loc - 10);
-        specialTitle = specialTitle == "mincolor" ? "admincolor" : specialTitle == "modcolor" ? "modcolor" : "";
-        return "<a class='" + specialTitle + "'href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
-    });
+if (sidebar) {
+    if (sidebar.parentElement.childElementCount == 2) {
+        const sideContent = sidebar.innerHTML;
+        const parts = sidebar.textContent.split("Members:");
+        const links = parts[1].trim().slice(0, -1).split(", ").map(name => {
+            loc = sideContent.search(name);
+            specialTitle = sideContent.substring(loc - 2, loc - 10);
+            specialTitle = specialTitle == "mincolor" ? "admincolor" : specialTitle == "modcolor" ? "modcolor" : "";
+            return "<a class='" + specialTitle + "'href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+        });
 
-    sidebar.innerHTML = parts[0] + "<br>Members: " + links.join(", ") + ".";
-} else {
-    const parts = document.getElementsByClassName("commasep-list")[0];
-    for (var i = 1; i < parts.childElementCount + 1; i++) {
-        var node = parts.childNodes[i].firstElementChild;
-        var name = node.textContent;
-        specialTitle = node.classList[0] ? node.classList[0] : "";
-        node.innerHTML = "<a class='" + specialTitle + "' href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+        sidebar.innerHTML = parts[0] + "<br>Members: " + links.join(", ") + ".";
+    } else {
+        const parts = document.getElementsByClassName("commasep-list")[0];
+        for (var i = 1; i < parts.childElementCount + 1; i++) {
+            var node = parts.childNodes[i].firstElementChild;
+            var name = node.textContent;
+            specialTitle = node.classList[0] ? node.classList[0] : "";
+            node.innerHTML = "<a class='" + specialTitle + "' href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+        }
     }
 }
 
 //Flatten pips
-var pips = document.querySelectorAll(".pips, .profile_brief .gen:nth-child(6)");
-for (var i = 0; i < pips.length; i++) {
-    var pip = pips[i].firstElementChild.src;
-    pips[i].style = pip.includes("expert.png") ? "background: none;" : "width: " + 0.75 * pip.slice(0, -4).split("pips/").pop() + "em";
-}
+Array.from(document.querySelectorAll(".pips, .profile_brief .gen:nth-child(6)")).forEach(pip => {
+    var pipImg = pip.firstElementChild.src;
+    pip.style = pipImg.includes("expert.png") ? "background: none;" : "width: " + 0.75 * pipImg.slice(0, -4).split("pips/").pop() + "em";
+});
 
 function globalCode(callback) {
     const script = document.createElement("script");
     script.innerHTML = `(${callback.toString()})()`;
     document.body.appendChild(script);
 }
+
 if (location.href.includes("cemetech.net/forum/posting.php")) {
     const TLMBug = document.querySelector("#page_content_parent > div.mainbody > div > table > tbody > tr > td > span");
     if (TLMBug.textContent == "Sorry, but only  can reply to posts in this forum.") {
