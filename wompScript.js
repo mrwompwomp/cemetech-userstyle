@@ -23,7 +23,7 @@ if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
 }
 
 //Fix unicode in post titles while listing topics in a subforum and while searching
-if (RegExp('cemetech.net\/forum\/(viewforum|search).php').test(location.href)) 
+if (/cemetech.net\/forum\/(viewforum|search).php/.test(location.href)) 
     Array.from(document.querySelectorAll(".topictitle > a")).forEach(titleLink => unescapeEntities(titleLink));
 
 //Shorter dates
