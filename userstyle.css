@@ -1,5 +1,4 @@
 /* anti-gradient */
-
 section.sidebar__section,
 div.mainlowermiddle,
 div.mainheadmiddle,
@@ -12,9 +11,7 @@ div#hbot {
     background: #c4c4c4 !important;
 }
 
-
 /* fancy underlines */
-
 a.postlink,
 li.navbutton a,
 a.maintitle,
@@ -49,9 +46,7 @@ li.navbutton:hover {
     background: none !important;
 }
 
-
 /* hide useless stuff */
-
 .sidebar__section:nth-child(1),
 .sidebar__section:nth-child(3),
 .topictail form,
@@ -62,7 +57,9 @@ li.navbutton:hover {
 img[src$="/vote_lcap.gif"],
 img[src$="/vote_rcap.gif"],
 .copyright,
-.mainlowermiddle {
+.mainlowermiddle,
+.spaceRow.hdivider_thick,
+.hiddenEmoji {
     display: none;
 }
 
@@ -70,17 +67,12 @@ img[src$="/vote_rcap.gif"],
     display: block;
 }
 
-
 /* hide annoying borders */
-
-.post-header {
-    border-bottom: none !important;
-}
-
 .post,
 .typepost,
 .helpline,
 img.avatar,
+.post-header,
 .profile_avatar img,
 .ppd_graph img,
 .forum-action-button,
@@ -99,10 +91,6 @@ table {
     border-collapse: collapse;
 }
 
-.spaceRow.hdivider_thick {
-    display: none !important;
-}
-
 tr > th {
     border-bottom: 1px solid #7B291B !important;
 }
@@ -114,16 +102,13 @@ tr > th {
     padding-right: 0.5em !important;
 }
 
-
-/** fix borders on registration/editing page **/
-
+/* fix borders on registration/editing page */
 .row2 .post {
     border: 1px solid #7B291B !important;
 }
 
 
 /* fix gaps */
-
 #hbot {
     top: 1px !important;
 }
@@ -143,17 +128,13 @@ tr > th {
     padding: 0.1875rem !important;
 }
 
-
 /* remove backgrounds */
-
 .innersidebar,
 .navbread {
     background: transparent !important;
 }
 
-
 /* hover effects */
-
 .sidebar__section,
 .nav-section__item,
 .file-detail__download-button,
@@ -174,8 +155,8 @@ tr > th {
 }
 
 /* wider sax */
-
-.sidebar {
+.sidebar,
+#saxtalk {
     width: 14.5rem !important;
 }
 
@@ -200,27 +181,17 @@ tr > th {
     }
 }
 
-#saxtalk {
-    width: 98.6%;
-}
-
-
 /* color accessibility */
-
 ul.pagination li:hover {
     background-color: #ccc !important;
 }
 
-
 /* center headings on member list */
-
 .thTop {
     text-align: center;
 }
 
-
 /* polls */
-
 table.forumline table table table {
     background: #7B291B;
     border-radius: 3px;
@@ -231,9 +202,7 @@ table.forumline table table table > * {
     visibility: hidden;
 }
 
-
 /* pips */
-
 .pips,
 .profile_brief .gen:nth-child(6) {
     display: inline-block;
@@ -249,17 +218,13 @@ table.forumline table table table > * {
     visibility: hidden;
 }
 
-
 /* center search bar vertically */
-
 .navsearch {
     margin-top: 0.375rem !important;
     background: #eee !important;
 }
 
-
 /* fix new post form widths */
-
 div.genmed,
 div.code-buttons {
     max-width: 40rem;
@@ -292,7 +257,8 @@ div.code-buttons {
 }
 
 /* search bar */
-.navsearchsubmit, .cursor-pointer {
+.navsearchsubmit,
+.cursor-pointer {
     cursor: pointer;
 }
 
@@ -309,8 +275,4 @@ div.code-buttons {
 /* mod color in online users */
 .modcolor {
     background: gray;
-}
-
-.hiddenEmoji {
-    display: none;
 }
