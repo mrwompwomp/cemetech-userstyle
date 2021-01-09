@@ -26,22 +26,6 @@ if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
 if (/cemetech.net\/forum\/(viewforum|search).php/.test(location.href)) 
     Array.from(document.querySelectorAll(".topictitle > a")).forEach(titleLink => unescapeEntities(titleLink));
 
-//Shorter dates
-if (location.href.includes("cemetech.net/forum/search.php")) {
-    var NodeList = document.getElementsByClassName("forumline")[0].firstElementChild.children;
-    for (var i = 2; i < NodeList.length; i++) {
-        var content = NodeList[i].lastElementChild.firstElementChild.firstElementChild.firstElementChild;
-        var options = {
-            month: 'short',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric'
-        };
-        content.textContent = new Date(content.textContent).toLocaleDateString('en-US', options);
-        content.parentNode.insertBefore(document.createElement("br"), content.nextElementSibling);
-    }
-}
-
 //Remove 'Say' button in SAX
 var sax = document.getElementById("saxtalk");
 sax.nextElementSibling.remove();
