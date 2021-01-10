@@ -181,6 +181,21 @@ tr > th {
     }
 }
 
+@media (min-width: 67.5em) {
+    #content_wrapper{
+        max-width: 95% !important;
+    }
+    
+    #page_content_parent {
+        width: calc(100% - 17rem) !important;
+    }
+
+    .sidebar,
+    #saxtalk {
+        width: 16.5rem !important;
+    }
+}
+
 /* color accessibility */
 ul.pagination li:hover {
     background-color: #ccc !important;
