@@ -59,6 +59,7 @@ img[src$="/vote_rcap.gif"],
 .copyright,
 .mainlowermiddle,
 .spaceRow.hdivider_thick,
+.topictools_rightbox span.nav,
 .hiddenEmoji {
     display: none;
 }
@@ -290,4 +291,18 @@ div.code-buttons {
 /* mod color in online users */
 .modcolor {
     background: gray;
+}
+
+/* hide broken buttons in user profiles */
+a[href="http://www.ticalc.org/archives/files/authors//1.html"] {
+	display: none;
+}
+
+/* center emotes */
+img[src^="images/smiles"] {
+    vertical-align: middle;
+}
+
+.quickstart {
+	margin: 1em;
 }
