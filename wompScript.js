@@ -23,12 +23,11 @@ if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
 }
 
 //Fix unicode in post titles while listing topics in a subforum and while searching
-if (/cemetech.net\/forum\/(viewforum|search).php/.test(location.href)) 
+if (/cemetech.net\/forum\/(viewforum|search).php/.test(location.href))
     Array.from(document.querySelectorAll(".topictitle > a")).forEach(titleLink => unescapeEntities(titleLink));
 
 //Remove 'Say' button in SAX
-var sax = document.getElementById("saxtalk");
-sax.nextElementSibling.remove();
+document.getElementById("saxtalk").nextElementSibling.remove();
 
 //Make online names clickable
 const sidebar = document.querySelectorAll("p.sidebar__section-body")[0];
@@ -162,7 +161,7 @@ if (location.href.includes("cemetech.net/forum/posting.php")) {
         const loc = document.querySelector("#page_content_parent > form > div.mainbody > div > table > tbody");
         loc.querySelector("tr:nth-child(3) > td.row1").firstElementChild.replaceWith(emojiTbl);
         loc.querySelector("tr:nth-child(3) > td.row2 > div:nth-child(5)").style.marginBottom = "10px";
-        document.querySelector("#page_content_parent > div:nth-child(7) > div > iframe").width = "99%";
+        document.querySelector("#page_content_parent > div.mainbody > div > iframe").width = "99%";
         //Add placeholder texts
         document.getElementsByName("subject")[0].placeholder = "Subject";
         document.getElementsByName("message")[0].placeholder = "Message Body";
@@ -172,7 +171,6 @@ if (location.href.includes("cemetech.net/forum/posting.php")) {
         loc.querySelector("tr:nth-child(4) > td.row1").innerHTML = "";
     }
 }
-
 
 //Restyle UTI pages
 if (location.href.includes("cemetech.net/projects/uti")) {
