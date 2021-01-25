@@ -306,3 +306,51 @@ img[src^="images/smiles"] {
 .quickstart {
 	margin: 1em;
 }
+
+/* make back to top arrows more discreet */
+a[href="#top"i] {
+    visibility: hidden !important;
+}
+
+a[href="#top"i]::before {
+    content: '↑';
+    visibility: visible;
+}
+
+/* shadows on all boxes */
+#hbot,
+.banner_container {
+    box-shadow: -3px 3px 5px #aaa;
+}
+
+.mainbody {
+    /* not sure what happened here, maybe a cemetech change? Not doing this causes weird, distracting shadows on the front page */
+    box-shadow: -3px -2px 5px #aaa;
+}
+
+.mainheadmiddle {
+    z-index: 1;
+}
+
+#page_content_parent {
+    padding-left: 0.5rem !important;
+}
+
+.banner_container {
+    border-radius: 23px 23px 0 0;
+    /* to match the image*/
+}
+
+.admincolor:hover {
+    -webkit-animation: beyblade 0.25s infinite linear;
+}
+
+@-webkit-keyframes beyblade {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
