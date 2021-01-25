@@ -39,7 +39,7 @@ if (sidebar) {
             loc = sideContent.search(name);
             specialTitle = sideContent.substring(loc - 2, loc - 10);
             specialTitle = specialTitle == "mincolor" ? "admincolor" : specialTitle == "modcolor" ? "modcolor" : "";
-            return "<a class='" + specialTitle + "'href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+            return "<p class='" + specialTitle + "' style='display:inline-block; margin: 0'><a class='" + specialTitle + "'href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a></p>";
         });
 
         sidebar.innerHTML = parts[0] + "<br>Members: " + links.join(", ") + ".";
@@ -49,7 +49,8 @@ if (sidebar) {
             var node = parts.childNodes[i].firstElementChild;
             var name = node.textContent;
             specialTitle = node.classList[0] ? node.classList[0] : "";
-            node.innerHTML = "<a class='" + specialTitle + "' href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a>";
+            node.classList = "";
+            node.innerHTML = "<p class='" + specialTitle + "' style='display:inline-block; margin: 0'><a href='https://www.cemetech.net/forum/profile.php?mode=viewprofile&u=" + encodeURIComponent(name).replace(/'/g, '%27') + "'>" + escapeHtml(name) + "</a></p>";
         }
     }
 }
