@@ -117,7 +117,7 @@ if (location.href.includes("cemetech.net/forum/posting.php")) {
 
             //Add Serif Button
             window["x_help"] = "Serif text (inline code): [serif]text[/serif] (alt+x)";
-            container.innerHTML += "<input type='button' name='addbbcode38' accesskey='z' value='Serif' style='font-family: serif; margin: 4px 4px 0 0;' onclick='bbstyle(38)' onmouseover=\"helpline(\'x\')\">";
+            container.innerHTML += "<input type='button' name='addbbcode38' accesskey='x' value='Serif' style='font-family: serif; margin: 4px 4px 0 0;' onclick='bbstyle(38)' onmouseover=\"helpline(\'x\')\">";
 
             //Add Sans Button
             window["n_help"] = "Sans-serif text (inline code): [sans]text[/sans] (alt+n)";
