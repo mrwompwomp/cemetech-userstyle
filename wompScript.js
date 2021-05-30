@@ -15,16 +15,50 @@ function unescapeEntities(html) {
     html.textContent = txt.value;
 }
 
-//Fix unicode in post titles (stolen from iPhoenix)
 if (location.href.includes("cemetech.net/forum/viewtopic.php")) {
+    //Fix unicode in post titles (stolen from iPhoenix)
     unescapeEntities(document.querySelector(".mainheadmiddle.roundedtop .maintitle"));
     unescapeEntities(document.querySelector("head > title"));
     unescapeEntities(document.getElementsByClassName("post-subject indextramed")[0]);
+
+    //Add copy button to code blocks (stolen from iPhoenix)
+    const temp = document.createElement("textarea");
+    temp.style = "position: absolute; opacity: 0;";
+    document.body.appendChild(temp);
+
+    Array.from(document.getElementsByClassName("code")).forEach((codeBlock) => {
+        const button = document.createElement("button");
+        button.innerText = "Copy";
+
+        debugger;
+        // needs to be addEventListener instead of .onclick because of spooky document.execCommand
+        button.addEventListener("click", () => {
+            const contents = codeBlock.getElementsByTagName("code")[0].innerText.replace(/\u00A0 \u00A0/g, "\t"); // wtf- 3 spaces?! I have officially seen everything.
+
+            temp.value = contents;
+            temp.select();
+
+            document.execCommand("copy");
+
+            button.innerText = "Copied!";
+            setTimeout(() => button.innerText = "Copy", 2000);
+        });
+
+        codeBlock.insertBefore(button, codeBlock.children[0]);
+    });
 }
 
 //Fix unicode in post titles while listing topics in a subforum and while searching
 if (/cemetech.net\/forum\/(viewforum|search).php/.test(location.href))
     Array.from(document.querySelectorAll(".topictitle > a")).forEach(titleLink => unescapeEntities(titleLink));
+
+//Remove empty profile info categories
+Array.from(document.querySelectorAll(".profile_infocat")).forEach(node => {
+    if (!node.nextElementSibling.textContent.trim()) {
+        node.nextElementSibling.remove();
+        node.remove();
+    }
+});
 
 //Remove 'Say' button in SAX
 document.getElementById("saxtalk").nextElementSibling.remove();
@@ -176,6 +210,6 @@ if (location.href.includes("cemetech.net/forum/posting.php")) {
 //Restyle UTI pages
 if (location.href.includes("cemetech.net/projects/uti")) {
     var style = document.createElement("style");
-    style.innerHTML = "tr>th{border-bottom: 1px solid #254e6f !important;}section.sidebar__section,div.mainlowermiddle,div.mainheadmiddle,div#hbot,.mainbody{background:#254e6f !important;}.sidebar__section,#hbot{border: 2px solid #19364d}a{color: #222}a:hover{color:#34498B}.maintitle:hover,.sidebar__section-body a:hover,.sidebar__section-header a:hover{color: white}.navsearchinput{background:#34498B !important;}img[src*='lang_english'],.navsearchsubmit{filter:hue-rotate(194deg);}.sax-message a{background:#1c264a}";
+    style.innerHTML = "tr>th{border-bottom: 1px solid #254e6f !important;}section.sidebar__section,div.mainlowermiddle,div.mainheadmiddle,div#hbot,.mainbody{background:#254e6f !important;}.sidebar__section,#hbot{border: 2px solid #19364d}a{color: #222}a:hover{color:#34498B}.maintitle:hover,.sidebar__section-body a:hover,.sidebar__section-header a:hover{color: white}.navsearchinput{background:#34498B !important;}img[src*='lang_english'],.navsearchsubmit,.banner_container{filter:hue-rotate(194deg);}.sax-message a{background:#1c264a}";
     document.body.append(style);
 }
